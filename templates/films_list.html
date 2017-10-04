@@ -7,30 +7,93 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Что в кино">
     <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="/static/favicon.ico">
 
     <title>Что в кино</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/custom.css" type="text/css">
   </head>
 
   <body>
-
-    <nav class="navbar">
+    <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/">Что в кино</a>
+          <span>
+            <a class="navbar-brand" href="/">Что в кино</a>
+          </span>
         </div>
       </div>
     </nav>
 
-    <div class="container">
-      <p>There Will Be Films</p>
+    <div class="container-fluid">
+      <div class="row">
+          <div class="col-xs-0 col-lg-2"></div>
+          <div class="col-xs-12 col-lg-8">
+              {% for movie_name, movie_info in movies %}
+              <div class="film-block">
+                  <div class="row">
+                      <div class="col-xs-12 col-sm-3 text-center">
+                          <img src="{{ movie_info['image']|e }}" alt="{{ movie_name|e }}">
+                          <br>
+                          <br>
+                      </div>
+                      <div class="col-xs-12 col-sm-9">
+                          <h3 class="text-left text-xs-center">
+                              {{ movie_name|e }}
+                          </h3>
+                          <h6 class="text-left text-xs-center">
+                              {{ movie_info['genre']|e }}
+                          </h6>
+                          <p class="hidden-lg text-xs-center">
+                              Рейтинг фильма:
+                              <span class="badge">{{ movie_info['rating']|e }}</span>
+                          </p>
+                          <hr>
+                          <p id="description">
+                              {{ movie_info['description'] }}
+                          </p>
+                          <hr>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-lg-3 text-center visible-lg">
+                          <p>
+                              Рейтинг фильма:
+                              <span class="badge">{{ movie_info['rating']|e }}</span>
+                          </p>
+                      </div>
+                      <div class="col-xs-6 col-md-6 col-lg-6 text-right">
+                          <p>Этот фильм показывают {{ movie_info['cinema_count']|e }} кинотеатров</p>
+                      </div>
+                      <div class="col-xs-6 col-md-6 col-lg-3 text-center">
+                          <a class="btn btn-sm btn-default" target="_blank" href="https://www.afisha.ru/msk/schedule_cinema_product/{{ movie_info['afisha_url'][-7:-1]|e }}">Выбрать сеанс</a>
+                      </div>
+                  </div>
+                  <br>
+              </div>
+              <br>
+              <br>
+              {% endfor %}
+          </div>
+          <div class="col-xs-0 col-lg-2"></div>
+      </div>
     </div><!-- /.container -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <nav class="footer navbar-static-bottom">
+      <div class="container">
+        <div class="navbar-nav">
+          <span>
+            Настоящий сайт создан в исключительно учебных целях. Все сведения о фильмах взяты с сайтов
+              <a href="https://www.afisha.ru/" target="_blank">Афиша</a> и
+              <a href="https://www.kinopoisk.ru/" target="_blank">Кинопоиск</a>.
+          </span>
+        </div>
+      </div>
+    </nav>
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
 </html>
