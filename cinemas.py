@@ -87,7 +87,8 @@ def get_movie_image_url(kinopoisk_id):
 def get_movies_data_for_template_engine(count_movies_to_output):
     movies_url_and_cinemas = parse_afisha_list(fetch_afisha_page())
     list_of_movies = list(movies_url_and_cinemas)
-    with Pool(10) as pool:
+    count_of_processes = 10
+    with Pool(count_of_processes) as pool:
         rating_and_kinopoisk_id = pool.map(
             get_movie_kinopoisk_id_with_rating, list_of_movies)
     for number_of_movie_in_list, movie in enumerate(list_of_movies):
@@ -100,7 +101,7 @@ def get_movies_data_for_template_engine(count_movies_to_output):
         key=lambda x: x[1]['rating'],
         reverse=True)
     list_of_afisha_urls = [info['afisha_url'] for movie, info in sorted_movies]
-    with Pool(10) as pool:
+    with Pool(count_of_processes) as pool:
         genre_and_description = pool.map(get_movie_info, list_of_afisha_urls)
     for number_of_movie_in_list, (movie, info) in enumerate(sorted_movies):
         info['genre'] = genre_and_description[number_of_movie_in_list]['genre']
