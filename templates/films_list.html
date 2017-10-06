@@ -44,7 +44,11 @@
                               {{ movie_name }}
                           </h3>
                           <h6 class="text-left text-xs-center">
-                              {{ movie_info['genre'] }}
+                              {% if movie_info['genre'] is none %}
+                                  Жанр
+                              {% else %}
+                                  {{ movie_info['genre'] }}
+                              {% endif %}
                           </h6>
                           <p class="hidden-lg text-xs-center rating">
                               Рейтинг фильма:
@@ -52,7 +56,11 @@
                           </p>
                           <hr>
                           <p class="description">
-                              {{ movie_info['description'] }}
+                              {% if movie_info['description'] is none %}
+                                  Описание
+                              {% else %}
+                                  {{ movie_info['description'] }}
+                              {% endif %}
                           </p>
                           <hr>
                       </div>
