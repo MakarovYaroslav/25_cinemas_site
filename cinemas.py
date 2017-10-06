@@ -119,7 +119,8 @@ def get_movies_urls_and_cinemas():
 
 
 def get_movies_data_for_template_engine(
-        movies_urls_and_cinemas, count_movies_to_output):
+        urls_and_cinemas, count_movies_to_output):
+    movies_urls_and_cinemas = urls_and_cinemas
     list_of_movies = list(movies_urls_and_cinemas)
     count_of_processes = 10
     with Pool(count_of_processes) as pool:
