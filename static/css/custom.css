@@ -10,35 +10,36 @@
 
 /* Large desktop */
 @media (min-width: 1200px) {
-  img{
+  .poster{
     margin-top: 22px;
     width: 160px;
   }
-  #description{
+  .description{
     padding-right: 25px;
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-  img{
+  .poster{
     margin-top: 22px;
     width: 160px;
   }
-  #description{
+  .description{
     padding-right: 15px;
   }
 }
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 991px) {
-  img{
+  .poster{
     margin-top: 22px;
     margin-left:10px;
     width: 160px;
   }
-  #description{
+  .description{
     padding-right: 15px;
+    font-size:12px;
   }
-  p{
+  .rating{
     font-size:12px;
   }
   .footer{
@@ -48,18 +49,22 @@
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
-  img{
+  .poster{
     margin-top: 10px;
     width: 200px;
   }
-  h3{
+  .title{
     margin-top:0;
     font-size:20px;
   }
   .text-xs-center {
     text-align: center;
   }
-  p{
+  .rating{
+    font-size:13px;
+    padding:0 15px;
+  }
+  .description{
     font-size:13px;
     padding:0 15px;
   }
@@ -74,7 +79,7 @@
   .text-xs-center {
     text-align: center;
   }
-  img{
+  .poster{
     width: 170px;
   }
 }
