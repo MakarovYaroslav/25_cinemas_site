@@ -35,23 +35,23 @@
               <div class="film-block">
                   <div class="row">
                       <div class="col-xs-12 col-sm-3 text-center">
-                          <img src="{{ movie_info['image']|e }}" alt="{{ movie_name|e }}">
+                          <img src="{{ movie_info['image'] }}" alt="{{ movie_name }}" class="poster">
                           <br>
                           <br>
                       </div>
                       <div class="col-xs-12 col-sm-9">
-                          <h3 class="text-left text-xs-center">
-                              {{ movie_name|e }}
+                          <h3 class="text-left text-xs-center title">
+                              {{ movie_name }}
                           </h3>
                           <h6 class="text-left text-xs-center">
-                              {{ movie_info['genre']|e }}
+                              {{ movie_info['genre'] }}
                           </h6>
-                          <p class="hidden-lg text-xs-center">
+                          <p class="hidden-lg text-xs-center rating">
                               Рейтинг фильма:
-                              <span class="badge">{{ movie_info['rating']|e }}</span>
+                              <span class="badge">{{ movie_info['rating'] }}</span>
                           </p>
                           <hr>
-                          <p id="description">
+                          <p class="description">
                               {{ movie_info['description'] }}
                           </p>
                           <hr>
@@ -61,14 +61,14 @@
                       <div class="col-lg-3 text-center visible-lg">
                           <p>
                               Рейтинг фильма:
-                              <span class="badge">{{ movie_info['rating']|e }}</span>
+                              <span class="badge">{{ movie_info['rating'] }}</span>
                           </p>
                       </div>
                       <div class="col-xs-6 col-md-6 col-lg-6 text-right">
-                          <p>Этот фильм показывают {{ movie_info['cinema_count']|e }} кинотеатров</p>
+                          <p>Этот фильм показывают {{ movie_info['cinema_count'] }} кинотеатров</p>
                       </div>
                       <div class="col-xs-6 col-md-6 col-lg-3 text-center">
-                          <a class="btn btn-sm btn-default" target="_blank" href="https://www.afisha.ru/msk/schedule_cinema_product/{{ movie_info['afisha_url'][-7:-1]|e }}">Выбрать сеанс</a>
+                          <a class="btn btn-sm btn-default" target="_blank" href="https://www.afisha.ru/msk/schedule_cinema_product/{{ movie_info['afisha_url'][-7:-1] }}">Выбрать сеанс</a>
                       </div>
                   </div>
                   <br>
